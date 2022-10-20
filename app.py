@@ -19,7 +19,7 @@ st.set_page_config(
     initial_sidebar_state = 'auto'
 )
 
-st.sidebar.image('logo.png')
+st.sidebar.image('image/logo.png')
 st.sidebar.title('Network Traffic Forecasting')
 st.sidebar.write('---')
 
@@ -31,7 +31,7 @@ Network Traffic Forecasting helps businesses **Forecast Their Network Usage**.!
 st.write('---')
 
 # Loads Dataset
-data_path = 'network_traffic_time_series.csv'
+data_path = 'data/network_traffic_time_series.csv'
 data_df = pd.read_csv(data_path, index_col = [0])
 data_df = data_df.T.copy().reset_index().rename(mapper={'index':'date','product_1':'traffic'}, axis=1)
 st.write(data_df.head(20))
@@ -57,7 +57,7 @@ def user_input_features():
 
 # to retrain
 agree = st.checkbox('Check to retrain the model')
-filename = 'finalized_model.sav'
+filename = 'model/finalized_model.sav'
 if agree:
 
     # Build Regression Model
